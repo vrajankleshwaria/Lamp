@@ -102,7 +102,7 @@ if (isset($_POST['search'])) {
             border-collapse: collapse;
             margin: 25px 0;
             font-size: 0.9em;
-            min-width: 700px;
+            min-width: 600px;
             border-radius: 5px 5px 0 0;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -143,7 +143,8 @@ if (isset($_POST['search'])) {
             backface-visibility: hidden;
             border-radius: 9px;
             color: white;
-            margin-left: 30%;
+            margin-left: 25%;
+            margin-right: 25%;
             margin-top: 10%;
             width: 50%;
             height: 40%;
@@ -262,7 +263,7 @@ if (isset($_POST['search'])) {
                 </table>
             </center>
 
-            <button type="submit" name="search" onclick="return selected()">Search</button>
+            <div align="center"><button type="submit" name="search" onclick="return selected()">Search</button></div>
         </div>
     </form>
 
