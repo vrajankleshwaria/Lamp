@@ -81,8 +81,8 @@ include('../includes/connection.php');
 
             Type :
             <select name="selection" id="selection">
-                <option value="1"> Credit </option>
-                <option value="2"> Debit </option>
+                <option value="credit"> Credit </option>
+                <option value="debit"> Debit </option>
             </select>
             <br><br>
             <label for="amount"> Amount </label>
@@ -107,7 +107,7 @@ include('../includes/connection.php');
         if (empty($amount) || $amount <= 0) {
             echo "<script> alert('Enter valid amount'); </script>";
         } else {
-            if ($selection == "2") $amount = -$amount;
+            if ($selection == "debit") $amount = -$amount;
             $query = "SELECT * FROM `customer` NATURAL JOIN `account` WHERE Acc_no='$accno'AND `Password` ='$pwd'";
 
             $result = mysqli_query($con, $query);
@@ -121,8 +121,11 @@ include('../includes/connection.php');
                 } else {
                     $query1 = "UPDATE `account` SET `Balance` = '$new_ammount' WHERE `Acc_no` = '$accno'";
                     $result2 = mysqli_query($con, $query1);
+                    $currdate = date("Y-m-d");
+                    $query2 = "INSERT INTO transaction (Acc_no, Type, Amt, Date) VALUES ('$accno', '$selection', '$new_ammount', '$currdate')";
+                    $result3 = mysqli_query($con, $query2);
                     echo "<script> alert('balance changed from {$curr_ammount} to {$new_ammount}'); </script>";
-                    echo "<script> location.href = './info.php' </script>";
+                    echo "<script> location.href = './eaccess.php' </script>";
                 }
             } else {
                 echo "<script> alert('Account details not found !'); </script>";
