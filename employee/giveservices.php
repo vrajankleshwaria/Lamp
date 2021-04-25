@@ -117,7 +117,7 @@ include('../includes/connection.php');
                 $curr_ammount = $result1['Balance'];
                 $new_ammount = $result1['Balance'] + $amount;
                 if ($new_ammount < 0) {
-                    echo "<script> alert('You don't have enough balance'); </script>";
+                    echo "<script> alert('You do not have enough balance'); </script>";
                 } else {
                     $query1 = "UPDATE `account` SET `Balance` = '$new_ammount' WHERE `Acc_no` = '$accno'";
                     $result2 = mysqli_query($con, $query1);
